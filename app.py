@@ -3,7 +3,7 @@ import os
 from queue import Empty
 from flask import Flask, render_template, request, session
 import json
-
+# Imports
 app = Flask(__name__)
 app.config.from_mapping(
         SECRET_KEY='dev',

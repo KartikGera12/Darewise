@@ -50,6 +50,7 @@ def getBlockedEpicsByBugName():
 def getBugsByEpicName():
     data = session['temp_db']
     searchEpicName = request.data.decode("utf-8")
+    # Checking if epic present in the data
     try:
         epicData = data[searchEpicName]
         print(epicData)
@@ -65,9 +66,12 @@ def getBugsByEpicName():
         if len(res)>0:
             return ("BLOCKED EPICS ARE: "+ res)
         else:
-            return ('NOTHING')
+            return ("NO Epics Found")
+        #If no data present
     except:
-        return ('NOTHING')
+        return ("NO Epics Found")
+
+
 #adding a new Task or a new Bug in a given Epic
 @app.route("/updateEpic", methods=['GET','POST'])
 def addTaskOrBugInAEpic():

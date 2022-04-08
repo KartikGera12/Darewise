@@ -20,10 +20,11 @@ def init():
 @app.route("/ingest", methods=['GET','POST'])
 def ingest():
     data = {**session['temp_db'],**request.get_json()}
+    #pushing json data into a temp database
     session['temp_db'] = data
     return "Data has been ingested"
 
-#listing all epics and their Ststus
+#listing all epics and their Status
 @app.route("/getbacklog", methods=['GET'])
 def getBacklog():
     data = session['temp_db']

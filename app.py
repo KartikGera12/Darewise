@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 import os
 from queue import Empty
 from flask import Flask, render_template, request, session
@@ -10,6 +9,7 @@ app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
+
 #Initialising
 @app.route("/", methods=['GET','POST'])
 def init():
@@ -107,5 +107,4 @@ def exportBacklog():
     data = session['temp_db']
     with open('backlog.json', 'w') as f:
         json.dump(data, f)
-
     return "BACKLOG EXPORTED"

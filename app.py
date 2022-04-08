@@ -39,27 +39,35 @@ def getBlockedEpicsByBugName():
     for key,value in data.items():
         if searchBugName in value['Bugs']:
             blockedEpics.append(key)
-
-    return "BLOCKED EPICS ARE: "+ str(blockedEpics).strip('[]')
+    res = str(blockedEpics).strip('[]')
+    if len(res)>0:
+        return "BLOCKED EPICS ARE: "+ str(blockedEpics).strip('[]')
+    else:
+        return ('Not Found')
 
 #listing all Bugs from an Epic
 @app.route("/searchbugbyepic", methods=['GET','POST'])
 def getBugsByEpicName():
     data = session['temp_db']
     searchEpicName = request.data.decode("utf-8")
-    epicData = data[searchEpicName]
-    print(epicData)
-    listOfBugs = []
-    #get current epic bugs
-    listOfBugs.extend(epicData['Bugs'])
-    #get linked epics bugs
-    if epicData['Epics']:
-        for epic in epicData['Epics']:
-            if data[epic]["Bugs"]:
-                listOfBugs.extend(data[epic]["Bugs"])
-
-    return "BLOCKED EPICS ARE: "+ str(listOfBugs).strip('[]')
-
+    try:
+        epicData = data[searchEpicName]
+        print(epicData)
+        listOfBugs = []
+        #get current epic bugs
+        listOfBugs.extend(epicData['Bugs'])
+        #get linked epics bugs
+        if epicData['Epics']:
+            for epic in epicData['Epics']:
+                if data[epic]["Bugs"]:
+                    listOfBugs.extend(data[epic]["Bugs"])
+        res = str(listOfBugs).strip('[]')
+        if len(res)>0:
+            return ("BLOCKED EPICS ARE: "+ res)
+        else:
+            return ('NOTHING')
+    except:
+        return ('NOTHING')
 #adding a new Task or a new Bug in a given Epic
 @app.route("/updateEpic", methods=['GET','POST'])
 def addTaskOrBugInAEpic():

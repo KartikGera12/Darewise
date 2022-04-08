@@ -1,6 +1,6 @@
 Run the command in in project directory: docker-compose up
 
-1.Instead of using a database, I am using a session stored dictionary to save the data in between API calls. As we are only storing the data in JSON format, we can store them directly as python dictioaries.
+1.Instead of using a database, I am using a session stored dictionary to save the data in between API calls. As we are only storing the data in JSON format, we can store them directly as python dictionary.
 Start by hitting the Init API call in the postman collections. This will create an empty dictionary.
 2. The ignest API call will store the data sent, in JSON format.
 3. "GET Backlog" will retrieve the current status of the data in JSON format.

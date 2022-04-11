@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "6b674cff-a163-46b2-815f-af74d2036d7f",
+		"name": "gera",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ingest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"EpicA\":\n    {\n    \"Tasks\": [\"TaskA1\", \"TaskA2\"],\n    \"Bugs\": [],\n    \"Epics\": [\"EpicB\"]\n    },\n    \"EpicB\":\n    {\n    \"Tasks\": [\"TaskB1\", \"TaskB2\"],\n    \"Bugs\": [\"BugB1\"],\n    \"Epics\": [\"\"]\n    },\n    \"EpicC\":\n    {\n    \"Tasks\": [],\n    \"Bugs\": [],\n    \"Epics\": []\n    },\n    \"EpicD\":\n    {\n    \"Tasks\": [],\n    \"Bugs\": [],\n    \"Epics\": [\"EpicC\"]\n    },\n    \"EpicE\":\n    {\n    \"Tasks\": [],\n    \"Bugs\": [\"BugE1\"],\n    \"Epics\": []\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/ingest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"ingest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchByEpic",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "EpicC"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/searchbugbyepic",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"searchbugbyepic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Init",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Backlog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/getbacklog",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"getbacklog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchByBug",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "BugB1",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/searchbug",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"searchbug"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateEpic",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Epic\": \"EpicC\",\n    \"Tasks\": [\"TaskC1\"],\n    \"Bugs\": [\"BugC1\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/updateEpic",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"updateEpic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTaskOrBug",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "TaskB1"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/deleteTaskOrBug",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"deleteTaskOrBug"
+					],
+					"query": [
+						{
+							"key": "con",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ExportBackog",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/exportBacklog",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"exportBacklog"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
